@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>This is first app/ home page</h2>
+    <h2>{{ mycar.brand }}</h2>
+    <h2>{{ fruits }}</h2>
+    <h2>{{ mycar }}</h2>
+
+    <h2>{{ fruits|length }}</h2>
+    <h2>{{ mycar.year|add:'2' }}</h2>
+    <h2>{{ name|addslashes }}</h2>
+    <h2>{{ name|capfirst }}</h2>
+    <h2>{{ name|lower }}</h2>
+    <h2>{{ my_name|make_list }}</h2>
+    <h2>{{ my_name|random }}</h2>
+    <h2>"{{ name|center:'15' }}"</h2>
+    <h2>{{ name|cut:' ' }}</h2>
+    <h2>{{ name|slugify }}</h2>
+    <h2>{{ birthday|date:'D d M Y' }}</h2>
+    <h2>{{ birthday|time:'H:i' }}</h2>
+    <h2>{{ empty_string|default:'nothing' }}</h2>
+    <h2>{{ employee|dictsort:'age' }}</h2>
+    <h2>{{ number|divisibleby:'3' }}</h2>
+    <h2>{{ file_size|filesizeformat }}</h2>
+    <h2>{{ fruits|first }}</h2>
+    <h2>{{ fruits|join:' // ' }}</h2>
+    <h2>{{ fruits|last }}</h2>
+    <h2>{{ fruits|slice:':2' }}</h2>
+    <h2>{{ fruits|linenumbers }}</h2>
+    <h2>{{ post|title }}</h2>
+    <h2>{{ post|upper }}</h2>
+    <h2>{{ post|wordcount }}</h2>
+    <h2>{{ animals|linenumbers }}</h2>
+    <h1>{{ mybirthdate|timesince:mydate }}</h1>
+    <h1>{{ mybirthdate|timesince }}</h1>
+
+    <h1>{{ date1|timesince:date2 }}</h1>
+
+    <ul>
+      <h1>{{ fruits|unordered_list }}</h1>
+    </ul>
+  </body>
+</html>
