@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+  <div class="container my-5">
+    <div class="row justify-content-center">
+      <div class="col-12 shadow-sm p-3 mb-5 bg-body rounded">
+        <p class="fw-bolder text-center">This is user {{ type }} page</p>
+      </div>
+      <div class="col-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Log in to your account</h5>
+            <form method="post" novalidate>
+              {% csrf_token %}
+              <!-- {{ form | crispy }} -->
+              {% for fm in form %}
+                {{ fm.label_tag }}
+                {{ fm }}
+                {{ fm.errors|striptags }}
+              {% endfor %}
+              <br />
+
+              <button type="submit" class="btn btn-primary">{{ type }}</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
