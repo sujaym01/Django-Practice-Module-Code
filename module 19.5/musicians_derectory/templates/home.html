@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if request.user.is_authenticated %}
+<div class="container text-center text-info mt-3">
+  <h4>This is home page</h4>
+  <h6>Add musician ? click Add Musician.</h6>
+  <h6>Edit musician ? click Musician's Name.</h6>
+  <h6>Add album ? click Add Album.</h6>
+  <h6>Edit album ? click Edit.</h6>
+</div>
+{% endif %}
+  <div class="container mt-5">
+    {% if data %}
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Musician Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Album Rating</th>
+            <th scope="col">Instrument Type</th>
+            <th scope="col">Album Name</th>
+            <th scope="col">Release Date</th>
+            {% if request.user.is_authenticated %}
+            <th scope="col">Actions</th>
+            {% endif %}
+          </tr>
+        </thead>
+        <tbody>
+          {% for i in data %}
+            <tr>
+              <td>{{ i.id }}</td>
+              {% if request.user.is_authenticated %}
+              <td>
+                <a class="text-decoration-none text-dark" href=" {% url 'edit_album' i.id %} ">{{ i.musician.first_name }} {{ i.musician.last_name }}</a>
+              </td>
+              {% else %}
+              <td>
+                <p>{{ i.musician.first_name }} {{ i.musician.last_name }}</p>
+              </td>
+              {% endif %}
+              <td>{{ i.musician.email }}</td>
+              <td>{{ i.album_rating }}</td>
+              <td>{{ i.musician.instrument_type }}</td>
+              <td>{{ i.album_name }}</td>
+              <td>{{ i.album_release_date }}</td>
+              {% if request.user.is_authenticated %}
+              <td>
+                <a class="text-decoration-none text-black" href=" {% url 'edit_album' i.id %} ">Edit</a>
+                <a class="text-decoration-none text-black" href="{% url 'delete_album' i.id %}">Delete</a>
+              </td>
+              {% endif %}
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <h3>No data available to show</h3>
+    {% endif %}
+  </div>
+{% endblock %}
